@@ -5,6 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .primary {
+            background-color: aquamarine;
+        }
+
+        .secondary {
+            background-color: orange;
+        }
+    </style>
 </head>
 
 <!-- Lugar de vacaciones, posibles alternativas, dias que me voy a estar, precio, transporte, sitios a visitar, donde me alojo, etc... -->
@@ -12,12 +21,19 @@
 <body>
     <h1>Básicos de Vue 3</h1>
     <main id="app">
-        <h2>Vacaciones</h2>
-        <p>Me gustaría a {{ city }}</p>
+        <h2 :id="idHolidays">Vacaciones</h2>
+        <p :class="backgroundClass">Me gustaría a {{ city }}</p>
         <p>Me gustaria pasar {{ days }} días </p>
         <p>Precio: {{price}}. Con un 21% de IVA: {{ price*1.21 }} </p>
         <p>La notación mostacho permite casi cualquier expresión JavaScript {{ 1 + 2 }}</p>
-        <p>Lugares para visitar: {{ placesToVisit }}</p>
+        <!-- 1. Ponemos los dos puntos para indicar que este atributo es dinámico 
+         2. Le tenemos que pasar una expresión JavaScript como valor. Le pasamos un objeto con todas las propiedades que queremos estableces. propiedad: valor -->
+        <p class="primary" :style="{color:paragraphColor, border:'1px solid red' }">Lugares para visitar: {{
+            placesToVisit.join(', ') }}</p>
+
+        <!-- @nombredelevento y como valor el nombre de una función -->
+        <button @click="increasePrice">Aumentar 100 € el precio del viaje</button>
+
     </main>
     <!-- El atributo type="module" significa que este un un script con soporte para módulos -->
     <script type="module">
@@ -37,13 +53,26 @@
                 const days = ref(10)
                 const price = ref(2900)
                 const placesToVisit = ref(['Sagrada Familia', 'Parque Güell', 'Casa Vicenç'])
+                const paragraphColor = ref('blue')
+                const idHolidays = ref('i-am-another-id')
+                const backgroundClass = ref('secondary');
+
+                const increasePrice = () => {
+                    console.log("Me has hecho click")
+                    // price realmente es un objeto. Para poder actualizar su valor, tenemos que hacer a travésde la propiedad .value
+                    price.value += 100
+                }
 
                 // En return, tenemos que poner cada variable y funcion que usamos en nuestro setup()
                 return {
                     city,
                     days,
                     price,
-                    placesToVisit
+                    placesToVisit,
+                    paragraphColor,
+                    idHolidays,
+                    backgroundClass,
+                    increasePrice
                 }
             }
         }).mount('#app') // Esto indica que la aplicación Vue debe ser "montada" en un tag con el id="app"
