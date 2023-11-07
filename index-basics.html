@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- Lugar de vacaciones, posibles alternativas, dias que me voy a estar, precio, transporte, sitios a visitar, donde me alojo, etc... -->
+
+<body>
+    <h1>Básicos de Vue 3</h1>
+    <main id="app">
+        <h2>Vacaciones</h2>
+        <p>Me gustaría a {{ city }}</p>
+    </main>
+    <!-- El atributo type="module" significa que este un un script con soporte para módulos -->
+    <script type="module">
+
+        // El import es una manera de importar funcionalidades de otros modulos. En este caso, importamos las funciones createApp y ref, del módulo Vue
+        import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+        // CreateApp es una función, que sirve para crear la aplicaición Vue. Recibe un objeto como parámetro
+        createApp({
+
+            // La función setup. La palabra setup del inglés, significa "preparar", "configurar", etc. En ella, vamos a definir todas las variables, funciones, y más, que vamos a usar en nuestra app
+            setup() {
+
+                // Contexto: queremos mostrar el valor de una cuantas variables en nuestro HTML
+                // la función ref recibe como parámetro el valor inicial de esta variable
+                const city = ref('Barcelona')
+
+                // En return, tenemos que poner cada variable y funcion que usamos en nuestro setup()
+                return {
+                    city
+                }
+            }
+        }).mount('#app') // Esto indica que la aplicación Vue debe ser "montada" en un tag con el id="app"
+    </script>
+</body>
+
+</html>
