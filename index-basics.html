@@ -14,6 +14,10 @@
     <main id="app">
         <h2>Vacaciones</h2>
         <p>Me gustaría a {{ city }}</p>
+        <p>Me gustaria pasar {{ days }} días </p>
+        <p>Precio: {{price}}. Con un 21% de IVA: {{ price*1.21 }} </p>
+        <p>La notación mostacho permite casi cualquier expresión JavaScript {{ 1 + 2 }}</p>
+        <p>Lugares para visitar: {{ placesToVisit }}</p>
     </main>
     <!-- El atributo type="module" significa que este un un script con soporte para módulos -->
     <script type="module">
@@ -30,10 +34,16 @@
                 // Contexto: queremos mostrar el valor de una cuantas variables en nuestro HTML
                 // la función ref recibe como parámetro el valor inicial de esta variable
                 const city = ref('Barcelona')
+                const days = ref(10)
+                const price = ref(2900)
+                const placesToVisit = ref(['Sagrada Familia', 'Parque Güell', 'Casa Vicenç'])
 
                 // En return, tenemos que poner cada variable y funcion que usamos en nuestro setup()
                 return {
-                    city
+                    city,
+                    days,
+                    price,
+                    placesToVisit
                 }
             }
         }).mount('#app') // Esto indica que la aplicación Vue debe ser "montada" en un tag con el id="app"
