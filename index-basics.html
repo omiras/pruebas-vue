@@ -24,7 +24,8 @@
         <h2 :id="idHolidays">Vacaciones</h2>
         <p :class="backgroundClass">Me gustaría a {{ city }}</p>
         <p>Me gustaria pasar {{ days }} días </p>
-        <p>Precio: {{price}}. Con un 21% de IVA: {{ price*1.21 }} </p>
+        <!-- Queremos que si el precio del viaje supera los 3000 euros, se ponga todo el texto en rojo -->
+        <p :style="{color: price>3000? 'red': 'green'}">Precio: {{price}}. Con un 21% de IVA: {{ price*1.21 }} </p>
         <p>La notación mostacho permite casi cualquier expresión JavaScript {{ 1 + 2 }}</p>
         <!-- 1. Ponemos los dos puntos para indicar que este atributo es dinámico 
          2. Le tenemos que pasar una expresión JavaScript como valor. Le pasamos un objeto con todas las propiedades que queremos estableces. propiedad: valor -->
