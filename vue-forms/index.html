@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>BMI Calculator</title>
+</head>
+
+<body>
+    <div id="app" class="container">
+        <h1>BMI Calculator</h1>
+        <div>
+            <p><label>Height in CM: </label><input v-model="height" type="number" id="height"></p>
+            <p><label>Weight in KG: </label><input v-model="weight" type="number" id="weight"></p>
+            <button :disabled="!height || !weight" @click="calculate">Calculate</button>
+            <div id="results">{{ bmi }} </div>
+            <div id="weight-guide">
+                <h3>BMI Weight Guide</h3>
+                <p :class="{ selected: bmi>0 && bmi<=18.6 }">Under Weight = Less than 18.6</p>
+                <p :class="{ selected: bmi>18.6 && bmi<=24.6 }">Normal Range = 18.6 and 24.9</p>
+                <p :class="{ selected:  bmi>24.6 }">Overweight = Greater than 24.9</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="module" src="script.js"></script>
+
+</html>
