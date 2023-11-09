@@ -34,13 +34,15 @@
 
         <!-- @nombredelevento y como valor el nombre de una función -->
         <button @click="increasePrice">Aumentar 100 € el precio del viaje</button>
-
+        <h2> Computed Properties</h2>
+        <p> Considero que el viaje es: {{ isExpensiveText }} </p>
+        <p> ¿Cuantos lugares para visitar tenemos en el array? {{ countPlacesToVisit }}</p>
     </main>
     <!-- El atributo type="module" significa que este un un script con soporte para módulos -->
     <script type="module">
 
         // El import es una manera de importar funcionalidades de otros modulos. En este caso, importamos las funciones createApp y ref, del módulo Vue
-        import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+        import { createApp, ref, computed } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
 
         // CreateApp es una función, que sirve para crear la aplicaición Vue. Recibe un objeto como parámetro
         createApp({
@@ -53,7 +55,7 @@
                 const city = ref('Barcelona')
                 const days = ref(10)
                 const price = ref(2900)
-                const placesToVisit = ref(['Sagrada Familia', 'Parque Güell', 'Casa Vicenç'])
+                const placesToVisit = ref(['Sagrada Familia', 'Parque Güell', 'Casa Vicenç', 'Korean Restaurant en Viladomat'])
                 const paragraphColor = ref('blue')
                 const idHolidays = ref('i-am-another-id')
                 const backgroundClass = ref('secondary');
@@ -64,7 +66,25 @@
                     price.value += 100
                 }
 
+                // Vamos a crear una propiedad computada de manera que nos diga si el viaje es caro o barato, en función del precio del viaje. Si el precio del viaje es mayor de 3000 euros, vamos a decir que es Caro, y si no Asequible
+
+
+                const isExpensiveText = computed(() => {
+                    // es oblitario hacer un return
+                    if (price.value > 3000) {
+                        return "Caro"
+                    }
+
+                    return "Asequible"
+                });
+
+                const countPlacesToVisit = computed(() => {
+                    return placesToVisit.value.length;
+                });
+
                 // En return, tenemos que poner cada variable y funcion que usamos en nuestro setup()
+
+
                 return {
                     city,
                     days,
@@ -73,7 +93,9 @@
                     paragraphColor,
                     idHolidays,
                     backgroundClass,
-                    increasePrice
+                    increasePrice,
+                    isExpensiveText,
+                    countPlacesToVisit
                 }
             }
         }).mount('#app') // Esto indica que la aplicación Vue debe ser "montada" en un tag con el id="app"
