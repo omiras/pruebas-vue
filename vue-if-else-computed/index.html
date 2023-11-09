@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Word Length Calcuator</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Type a word in the box</h1>
+        <input v-model="inputUser" type="text" id="str">
+        <div v-show="inputUser" id="output">El número de letras es: {{ inputUser.length }} </div>
+
+        <!-- el v-show y el v-if muestran o no, el tag y todos sus hijos (innerHTML)-->
+        <div v-show="inputUser">
+            <p v-if="isEven">El número de carácteres es un número par</p>
+            <p v-else>El número de carácteres es un número impar</p>
+        </div>
+
+    </div>
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>
