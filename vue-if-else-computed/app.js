@@ -11,7 +11,7 @@ createApp({
     const inputUser = ref("");
 
     const isEven = computed(() => {
-      return inputUser.value.length % 2 == 0;
+      return inputUser.value.length % 2 == 0; // true / false
     });
 
     return { inputUser, isEven };

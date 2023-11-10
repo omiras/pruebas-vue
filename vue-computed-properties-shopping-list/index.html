@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/picocss/1.5.2/pico.min.css"
+        integrity="sha512-3gFq2IXMVlAQaUyahzhjDRivv0yqyXTb7xiy6ivTaG5Uz4hKI54uYxpQefdomgDVQ11eJVUbXG0YdPMDISiGgg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Word Length Calcuator</title>
+</head>
+
+<body>
+    <div class="container" id="app">
+        <h1>Computed Properties</h1>
+        <section>
+            <label for="">Nombre Producto</label>
+            <input v-model="productName" type="text" name="" id="">
+            <label for="">Precio</label>
+            <input v-model="productPrice" type="number" name="" id="">
+            <button @click="addProduct">Añadir producto</button>
+        </section>
+        <h2>Lista de productos comprados</h2>
+        <div>
+            {{ allProducts }}
+        </div>
+        <h3>¿Has comprado tomates?: {{ didYouBuyTomatoes }}</h3>
+    </div>
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>
