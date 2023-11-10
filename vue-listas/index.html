@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Listas en Vue</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/picocss/1.5.2/pico.min.css"
+        integrity="sha512-3gFq2IXMVlAQaUyahzhjDRivv0yqyXTb7xiy6ivTaG5Uz4hKI54uYxpQefdomgDVQ11eJVUbXG0YdPMDISiGgg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div id="app">
+        <h1>Listas en Vue</h1>
+        <h2>Videojuegos</h2>
+        <!-- LA variable video es arbitraria (está relacionada con el tipo de información que contiene el array). videogames es el array sobre el que queremos iterar-->
+        <ul>
+            <li v-for="game in videogames">
+                <p>{{game}}</p>
+            </li>
+        </ul>
+
+    </div>
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>

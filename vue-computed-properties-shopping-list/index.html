@@ -23,7 +23,9 @@
         </section>
         <h2>Lista de productos comprados</h2>
         <div>
-            {{ allProducts }}
+            <article v-for="product in allProducts">
+                <h3 style="color: orange">{{ product.name }} : {{ product.price}} €</h3>
+            </article>
         </div>
         <h3>¿Has comprado tomates?: {{ didYouBuyTomatoes }}</h3>
     </div>
